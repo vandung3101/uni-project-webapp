@@ -16,12 +16,19 @@ def query(payload, API_URL=EN_MODEL_API_URL):
 	response = requests.post(API_URL, headers=headers, json=payload)
 	return response.json()
 
-def get_answer(question):
-	payload = {"inputs": question}
+def text2text(sentence):
+	payload = {"inputs": sentence}
 	response = query(payload)
 	return response
 
-question = st.text_input("Enter your sentence:")
+en_sentence = st.text_input("Enter your sentence:")
 if st.button("Generate"):
-    answer = get_answer(question)
+    answer = text2text(en_sentence)
     st.write(answer)
+
+vi_sentence = st.text_input("Enter your sentence:")
+if st.button("Generate"):
+    answer = text2text(vi_sentence)
+    st.write(answer)
+
+
