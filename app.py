@@ -16,11 +16,11 @@ def query(payload):
 	return response.json()
 	
 def get_answer(question):
-	payload = {"inputs": question}
+    payload = {"inputs": question}
     outputs = query(payload)
     return outputs
 
 question = st.text_input("Enter your question")
-if question:
+if st.button("Get answer"):
     answer = get_answer(question)
     st.write(answer)
