@@ -21,7 +21,7 @@ def get_answer(question):
 	response = query(payload)
 	return response
 
-question = st.text_input("Enter your question")
-if question:
+question = st.text_input("Enter your sentence:")
+if st.button("Generate"):
     answer = get_answer(question)
     st.write(answer)
