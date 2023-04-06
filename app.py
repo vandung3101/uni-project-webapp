@@ -19,7 +19,7 @@ def query(payload, API_URL=EN_MODEL_API_URL):
 def get_answer(question):
 	payload = {"inputs": question}
 	response = query(payload)
-	return response[0]["generated_text"]
+	return response
 
 question = st.text_input("Enter your question")
 if question:
