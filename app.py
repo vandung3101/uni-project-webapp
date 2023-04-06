@@ -15,11 +15,11 @@ headers = {"Authorization": "Bearer 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"}
 def query(payload, API_URL=EN_MODEL_API_URL):
 	response = requests.post(API_URL, headers=headers, json=payload)
 	return response.json()
-	
+
 def get_answer(question):
 	payload = {"inputs": question}
-    response = query(payload)
-    return response[0]
+	response = query(payload)
+	return response[0]["generated_text"]
 
 question = st.text_input("Enter your question")
 if question:
