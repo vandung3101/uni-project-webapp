@@ -21,13 +21,13 @@ def text2text(sentence):
 	response = query(payload)
 	return response
 
-en_sentence = st.text_input("Enter your sentence:")
-if st.button("Generate"):
+en_sentence = st.text_input("Enter your en sentence:")
+if st.button("Generate en sentence"):
     answer = text2text(en_sentence)
     st.write(answer)
 
-vi_sentence = st.text_input("Enter your sentence:")
-if st.button("Generate"):
+vi_sentence = st.text_input("Enter your vi sentence:")
+if st.button("Generate vi sentence"):
     answer = text2text(vi_sentence)
     st.write(answer)
 
