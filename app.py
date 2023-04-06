@@ -8,19 +8,20 @@ st.title("Demo of text to text model")
 
 import requests
 
-API_URL = "https://api-inference.huggingface.co/models/ihgn/similar-questions"
+VI_MODEL_API_URL = "https://api-inference.huggingface.co/models/ihgn/similar-questions"
+EN_MODEL_API_URL = "https://api-inference.huggingface.co/models/vandung/t5-para"
 headers = {"Authorization": "Bearer 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"}
 
-def query(payload):
+def query(payload, API_URL=EN_MODEL_API_URL):
 	response = requests.post(API_URL, headers=headers, json=payload)
 	return response.json()
 	
 def get_answer(question):
-    payload = {"inputs": question}
-    outputs = query(payload)
-    return outputs
+	payload = {"inputs": question}
+    response = query(payload)
+    return response[0]
 
 question = st.text_input("Enter your question")
-if st.button("Get answer"):
+if question:
     answer = get_answer(question)
     st.write(answer)
