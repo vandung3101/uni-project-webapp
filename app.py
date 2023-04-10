@@ -44,3 +44,10 @@ else:
                          "Compact": True, "bg": "#09a3d5", "color": "white", "font": "Source Sans Pro", "collapse_phrases": True})
         visualize_ner(doc, labels=nlp.get_pipe("ner").labels)
         st.write(answer)
+
+# add author info to the sidebar
+# author are Van Dung and Sang Sinh
+with st.sidebar:
+    st.markdown("## Author")
+    st.markdown("Van Dung")
+    st.markdown("Sang Sinh")
