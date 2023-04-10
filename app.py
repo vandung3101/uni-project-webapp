@@ -29,8 +29,8 @@ if st.button("Generate en sentence"):
 	answer = text2text(en_sentence)
 	doc = nlp(en_sentence)
 	visualize_parser(doc)
-	visualize_ner(doc, labels=nlp.get_pipe("ner").labels)
     deplacy.serve(doc)
+	visualize_ner(doc, labels=nlp.get_pipe("ner").labels)
 
 vi_sentence = st.text_input("Enter your vi sentence:")
 if st.button("Generate vi sentence"):
