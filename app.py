@@ -35,7 +35,8 @@ def text2text(sentence):
 #     answer = text2text(vi_sentence)
 #     st.write(answer)
 
-# I want to have a sidebar to select the language, then the input box and button will be displayed based on the language selected. How can I do that?
+# use sidebar to select language, then show the corresponding input box, and the corresponding model, and the corresponding visualization
+
 st.sidebar.title("Select language")
 language = st.sidebar.selectbox("Language", ["English", "Vietnamese"])
 
@@ -51,3 +52,4 @@ else:
     if st.button("Generate"):
         answer = text2text(vi_sentence)
         st.write(answer)
+        
