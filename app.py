@@ -25,7 +25,7 @@ def text2text(sentence):
     return response
 
 st.sidebar.title("Select language")
-language = st.sidebar.selectbox("Language", ["English", "Vietnamese"])
+language = st.sidebar.radio("Language", ["English", "Vietnamese"])
 
 if language == "English":
     en_sentence = st.text_input("Enter your sentence:")
