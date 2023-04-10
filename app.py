@@ -6,6 +6,8 @@ from spacy_streamlit import visualize_parser, visualize_ner
 import spacy
 from spacy import displacy
 
+st.set_page_config(layout="wide")
+
 # os.system("/home/appuser/venv/bin/python -m spacy download en_core_web_sm")
 st.title("NLP Application")
 
