@@ -47,7 +47,7 @@ if language == "English":
     if st.button("Generate"):
         answer = text2text(en_sentence)
         doc = nlp(en_sentence)
-        deplacy.render(doc)
+        visualize_parser(doc, collapse_punct=False, collapse_phrases=False)
         visualize_ner(doc, labels=nlp.get_pipe("ner").labels)
 else:
     vi_sentence = st.text_input("Enter your vi sentence:")
