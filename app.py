@@ -2,7 +2,8 @@
 import os
 import streamlit as st
 import requests
-import spacy_streamlit
+from spacy_streamlit import visualize_parser
+import spacy
 
 os.system("/home/appuser/venv/bin/python -m spacy download en_core_web_sm")
 st.title("Demo of text to text model")
@@ -23,10 +24,9 @@ def text2text(sentence):
 en_sentence = st.text_input("Enter your en sentence:")
 if st.button("Generate en sentence"):
 	answer = text2text(en_sentence)
-	models = ["en_core_web_sm"]
-	default_text = "Sundar Pichai is the CEO of Google."
-	visualizers = ["ner", "textcat"]
-	spacy_streamlit.visualize(models, default_text, visualizers)
+	nlp = spacy.load("en_core_web_sm")
+	doc = nlp("This is a text")
+	visualize_parser(doc)
 
 vi_sentence = st.text_input("Enter your vi sentence:")
 if st.button("Generate vi sentence"):
