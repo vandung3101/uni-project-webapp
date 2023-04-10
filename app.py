@@ -34,22 +34,41 @@ language = st.sidebar.radio("Language", ["English", "Vietnamese"], horizontal=Tr
 
 if language == "English":
     en_sentence = st.text_input("Enter your sentence:")
-    if st.button("Generate"):
-        answer = text2text(en_sentence)
-        doc = nlp(en_sentence)
-        visualize_parser(doc, displacy_options={"Compact": True, "bg": "#09a3d5", "color": "white", "font": "Source Sans Pro", "collapse_phrases": True})
-        visualize_ner(doc, labels=nlp.get_pipe("ner").labels)
-        # print generated_text from answer
-        st.write(answer.get("generated_text"))
+    # create 2 buttons in one line: Generate and Visualize
+    col1, col2 = st.beta_columns(2)
+    with col1:
+        if st.button("Generate"):
+            answer = text2text(en_sentence)
+            st.write(answer)
+    with col2:
+        if st.button("Visualize"):
+            doc = nlp(en_sentence)
+            visualize_parser(doc, displacy_options={
+                             "Compact": True, "bg": "#09a3d5", "color": "white", "font": "Source Sans Pro", "collapse_phrases": True})
+            visualize_ner(doc, labels=nlp.get_pipe("ner").labels)
 else:
     vi_sentence = st.text_input("Enter your vi sentence:")
-    if st.button("Generate"):
-        answer = text2text(vi_sentence)
-        doc = nlp(vi_sentence)
-        visualize_parser(doc, displacy_options={
-                         "Compact": True, "bg": "#09a3d5", "color": "white", "font": "Source Sans Pro", "collapse_phrases": True})
-        visualize_ner(doc, labels=nlp.get_pipe("ner").labels)
-        st.write(answer)
+    col1, col2 = st.beta_columns(2)
+    with col1:
+        if st.button("Generate"):
+            answer = text2text(vi_sentence)
+            st.write(answer)
+    with col2:
+        if st.button("Visualize"):
+            doc = nlp(vi_sentence)
+            visualize_parser(doc, displacy_options={
+                             "Compact": True, "bg": "#09a3d5", "color": "white", "font": "Source Sans Pro", "collapse_phrases": True})
+            visualize_ner(doc, labels=nlp.get_pipe("ner").labels)
+
+# else:
+#     vi_sentence = st.text_input("Enter your vi sentence:")
+#     if st.button("Generate"):
+#         answer = text2text(vi_sentence)
+#         doc = nlp(vi_sentence)
+#         visualize_parser(doc, displacy_options={
+#                          "Compact": True, "bg": "#09a3d5", "color": "white", "font": "Source Sans Pro", "collapse_phrases": True})
+#         visualize_ner(doc, labels=nlp.get_pipe("ner").labels)
+#         st.write(answer)
 
 # add author info to the sidebar
 # author are Van Dung and Sang Sinh
