@@ -54,4 +54,12 @@ else:
 # author are Van Dung and Sang Sinh
 # advisor is Mr. Le Anh Cuong
 st.sidebar.title("About")
-st.sidebar.info( "This app is created by Van Dung and Sang Sinh. Advisor is Mr. Le Anh Cuong.")
+st.sidebar.info( "This app is created by Van Dung and Sang Sinh. Advised by Mr. Le Anh Cuong.")
+
+# add a link to the source code
+st.sidebar.title("Source code")
+st.sidebar.info("https://github.com/vandung3101/uni-project-webapp")
+
+# add Contact info
+st.sidebar.title("Contact")
+st.sidebar.info("Phone number 0339607003")
