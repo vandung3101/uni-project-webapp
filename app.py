@@ -6,7 +6,7 @@ from spacy_streamlit import visualize_parser, visualize_ner
 import spacy
 from spacy import displacy
 
-os.system("/home/appuser/venv/bin/python -m spacy download en_core_web_sm")
+# os.system("/home/appuser/venv/bin/python -m spacy download en_core_web_sm")
 st.title("NLP Application")
 
 VI_MODEL_API_URL = "https://api-inference.huggingface.co/models/ihgn/similar-questions"
@@ -47,7 +47,6 @@ else:
 
 # add author info to the sidebar
 # author are Van Dung and Sang Sinh
-with st.sidebar:
-    st.markdown("## Author")
-    st.markdown("Van Dung")
-    st.markdown("Sang Sinh")
+# advisor is Mr. Le Anh Cuong
+st.sidebar.title("About")
+st.sidebar.info( "This app is created by Van Dung and Sang Sinh. Advisor is Mr. Le Anh Cuong.")
