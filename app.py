@@ -6,7 +6,7 @@ from spacy_streamlit import visualize_parser, visualize_ner, visualize_textcat
 import spacy
 import deplacy
 
-os.system("/home/appuser/venv/bin/python -m spacy download en_core_web_sm")
+# os.system("/home/appuser/venv/bin/python -m spacy download en_core_web_sm")
 st.title("Demo of text to text model")
 
 VI_MODEL_API_URL = "https://api-inference.huggingface.co/models/ihgn/similar-questions"
@@ -46,7 +46,7 @@ if language == "English":
     if st.button("Generate"):
         answer = text2text(en_sentence)
         doc = nlp(en_sentence)
-        visualize_parser(doc, displacy_options={"compact": True, "collapse_punct": True})
+        visualize_parser(doc, displacy_options={"compact": True})
         visualize_ner(doc, labels=nlp.get_pipe("ner").labels)
 else:
     vi_sentence = st.text_input("Enter your vi sentence:")
