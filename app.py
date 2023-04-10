@@ -13,52 +13,48 @@ st.title("NLP Application")
 st.info("This app is a NLP application that can generate sentences from a given sentence without losing the meaning of the original sentence.")
 
 
-
 VI_MODEL_API_URL = "https://api-inference.huggingface.co/models/ihgn/similar-questions"
 EN_MODEL_API_URL = "https://api-inference.huggingface.co/models/vandung/t5-para"
 headers = {"Authorization": "Bearer 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"}
 
 nlp = spacy.load("en_core_web_sm")
 
+
 def query(payload, API_URL=EN_MODEL_API_URL):
     response = requests.post(API_URL, headers=headers, json=payload)
     return response.json()
+
 
 def text2text(sentence):
     payload = {"inputs": sentence}
     response = query(payload)
     return response
 
+
 st.sidebar.title("Select language")
-language = st.sidebar.radio("Language", ["English", "Vietnamese"], horizontal=True)
+language = st.sidebar.radio(
+    "Language", ["English", "Vietnamese"], horizontal=True)
 
 if language == "English":
     en_sentence = st.text_input("Enter your sentence:")
-    # create 2 buttons in one line: Generate and Visualize
-    col1, col2 = st.beta_columns(2)
-    with col1:
-        if st.button("Generate"):
-            answer = text2text(en_sentence)
-            st.write(answer)
-    with col2:
-        if st.button("Visualize"):
-            doc = nlp(en_sentence)
-            visualize_parser(doc, displacy_options={
+    if st.button("Generate"):
+        answer = text2text(en_sentence)
+        st.write(answer)
+    if st.button("Visualize"):
+        doc = nlp(en_sentence)
+        visualize_parser(doc, displacy_options={
                              "Compact": True, "bg": "#09a3d5", "color": "white", "font": "Source Sans Pro", "collapse_phrases": True})
-            visualize_ner(doc, labels=nlp.get_pipe("ner").labels)
+        visualize_ner(doc, labels=nlp.get_pipe("ner").labels)
 else:
     vi_sentence = st.text_input("Enter your vi sentence:")
-    col1, col2 = st.beta_columns(2)
-    with col1:
-        if st.button("Generate"):
-            answer = text2text(vi_sentence)
-            st.write(answer)
-    with col2:
-        if st.button("Visualize"):
-            doc = nlp(vi_sentence)
-            visualize_parser(doc, displacy_options={
+    if st.button("Generate"):
+        answer = text2text(vi_sentence)
+        st.write(answer)
+    if st.button("Visualize"):
+        doc = nlp(vi_sentence)
+        visualize_parser(doc, displacy_options={
                              "Compact": True, "bg": "#09a3d5", "color": "white", "font": "Source Sans Pro", "collapse_phrases": True})
-            visualize_ner(doc, labels=nlp.get_pipe("ner").labels)
+        visualize_ner(doc, labels=nlp.get_pipe("ner").labels)
 
 # else:
 #     vi_sentence = st.text_input("Enter your vi sentence:")
@@ -74,7 +70,7 @@ else:
 # author are Van Dung and Sang Sinh
 # advisor is Mr. Le Anh Cuong
 st.sidebar.title("About")
-st.sidebar.info( "This app is created by Van Dung and Sang Sinh. Advised by Mr. Le Anh Cuong.")
+st.sidebar.info("This app is created by Van Dung and Sang Sinh. Advised by Mr. Le Anh Cuong.")
 
 # add a link to the source code
 st.sidebar.title("Source code and Reference")
