@@ -4,6 +4,7 @@ import streamlit as st
 import requests
 from spacy_streamlit import visualize_parser, visualize_ner, visualize_textcat
 import spacy
+import deplacy
 
 # os.system("/home/appuser/venv/bin/python -m spacy download en_core_web_sm")
 st.title("Demo of text to text model")
@@ -29,7 +30,7 @@ if st.button("Generate en sentence"):
 	doc = nlp(en_sentence)
 	visualize_parser(doc)
 	visualize_ner(doc, labels=nlp.get_pipe("ner").labels)
-	visualize_textcat(doc)
+    deplacy.serve(doc)
 
 vi_sentence = st.text_input("Enter your vi sentence:")
 if st.button("Generate vi sentence"):
