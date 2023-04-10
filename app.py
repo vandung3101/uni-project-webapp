@@ -9,6 +9,11 @@ from spacy import displacy
 # os.system("/home/appuser/venv/bin/python -m spacy download en_core_web_sm")
 st.title("NLP Application")
 
+# write a short description of the app
+st.write("This app is a NLP application that can generate sentences from a given sentence without losing the meaning of the original sentence.")
+
+
+
 VI_MODEL_API_URL = "https://api-inference.huggingface.co/models/ihgn/similar-questions"
 EN_MODEL_API_URL = "https://api-inference.huggingface.co/models/vandung/t5-para"
 headers = {"Authorization": "Bearer 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"}
