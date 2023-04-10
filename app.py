@@ -22,8 +22,8 @@ def text2text(sentence):
 
 en_sentence = st.text_input("Enter your en sentence:")
 if st.button("Generate en sentence"):
-    answer = text2text(en_sentence)
-    models = ["en_core_web_sm"]
+	answer = text2text(en_sentence)
+	models = ["en_core_web_sm"]
 	default_text = "Sundar Pichai is the CEO of Google."
 	visualizers = ["ner", "textcat"]
 	spacy_streamlit.visualize(models, default_text, visualizers)
