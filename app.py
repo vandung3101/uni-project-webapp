@@ -29,7 +29,6 @@ if st.button("Generate en sentence"):
     answer = text2text(en_sentence)
     doc = nlp(en_sentence)
     visualize_parser(doc)
-    deplacy.serve(doc)
     visualize_ner(doc, labels=nlp.get_pipe("ner").labels)
         
 
