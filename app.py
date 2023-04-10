@@ -24,7 +24,7 @@ def text2text(sentence):
 	return response
 
 en_sentence = st.text_input("Enter your en sentence:")
-if st.button("Generate en sentence"):
+with st.button("Generate en sentence"):
 	answer = text2text(en_sentence)
 	doc = nlp(en_sentence)
 	visualize_parser(doc)
