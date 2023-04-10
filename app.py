@@ -62,4 +62,4 @@ st.sidebar.info("https://github.com/vandung3101/uni-project-webapp")
 
 # add Contact info
 st.sidebar.title("Contact")
-st.sidebar.info("Phone number 0339607003")
+st.sidebar.info("Email 51900046@student.tdtu.edu.vn")
