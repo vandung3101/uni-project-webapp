@@ -5,7 +5,7 @@ import requests
 from spacy_streamlit import visualize_parser, visualize_ner, visualize_textcat
 import spacy
 
-# os.system("/home/appuser/venv/bin/python -m spacy download en_core_web_sm")
+os.system("/home/appuser/venv/bin/python -m spacy download en_core_web_sm")
 st.title("Demo of text to text model")
 
 VI_MODEL_API_URL = "https://api-inference.huggingface.co/models/ihgn/similar-questions"
