@@ -47,7 +47,7 @@ if language == "English":
     if st.button("Generate"):
         answer = text2text(en_sentence)
         doc = nlp(en_sentence)
-        visualize_parser(doc, displacy_options={"compact": True, "bg": "#09a3d5", "color": "white", "font": "Source Sans Pro", "collapse_phrases": True})
+        visualize_parser(doc, displacy_options={"compact": "True", "bg": "#09a3d5", "color": "white", "font": "Source Sans Pro", "collapse_phrases": True})
         visualize_ner(doc, labels=nlp.get_pipe("ner").labels)
 else:
     vi_sentence = st.text_input("Enter your vi sentence:")
