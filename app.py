@@ -30,7 +30,7 @@ def text2text(sentence):
     return response
 
 st.sidebar.title("Select language")
-language = st.sidebar.radio("Language", ["English", "Vietnamese"])
+language = st.sidebar.radio("Language", ["English", "Vietnamese"], horizontal=True)
 
 if language == "English":
     en_sentence = st.text_input("Enter your sentence:")
@@ -62,4 +62,4 @@ st.sidebar.info("https://github.com/vandung3101/uni-project-webapp")
 
 # add Contact info
 st.sidebar.title("Contact")
-st.sidebar.info("Email 51900046@student.tdtu.edu.vn")
+st.sidebar.info("Email:  51900046@student.tdtu.edu.vn")
