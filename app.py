@@ -57,7 +57,7 @@ st.sidebar.title("About")
 st.sidebar.info( "This app is created by Van Dung and Sang Sinh. Advised by Mr. Le Anh Cuong.")
 
 # add a link to the source code
-st.sidebar.title("Source code")
+st.sidebar.title("Source code anf Reference")
 st.sidebar.info("https://github.com/vandung3101/uni-project-webapp")
 
 # add Contact info
