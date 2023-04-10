@@ -27,7 +27,6 @@ if st.button("Generate en sentence"):
 	default_text = "Sundar Pichai is the CEO of Google."
 	visualizers = ["ner", "textcat"]
 	spacy_streamlit.visualize(models, default_text, visualizers)
-    st.write(answer)
 
 vi_sentence = st.text_input("Enter your vi sentence:")
 if st.button("Generate vi sentence"):
