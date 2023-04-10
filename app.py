@@ -5,6 +5,7 @@ import requests
 from spacy_streamlit import visualize_parser, visualize_ner
 import spacy
 from spacy import displacy
+import time
 
 st.set_page_config(layout="wide")
 
@@ -29,7 +30,13 @@ def query(payload, API_URL=EN_MODEL_API_URL):
 
 def text2text(sentence):
     payload = {"inputs": sentence}
-    response = query(payload)
+    # keep query ultil response is contain "generated_text"
+    while True:
+        response = query(payload)
+        if "generated_text" in response[0]:
+            break
+        # wait 1 second
+        time.sleep(1)
     return response
 
 
