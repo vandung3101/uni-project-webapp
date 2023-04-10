@@ -5,7 +5,7 @@ import requests
 import spacy_streamlit
 import os
 
-# os.system("python -m spacy download en_core_web_sm")
+os.system("/home/appuser/venv/bin/python -m spacy download en_core_web_sm")
 st.title("Demo of text to text model")
 
 VI_MODEL_API_URL = "https://api-inference.huggingface.co/models/ihgn/similar-questions"
