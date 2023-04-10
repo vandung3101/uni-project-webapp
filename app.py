@@ -10,7 +10,7 @@ from spacy import displacy
 st.title("NLP Application")
 
 # write a short description of the app
-st.write("This app is a NLP application that can generate sentences from a given sentence without losing the meaning of the original sentence.")
+st.info("This app is a NLP application that can generate sentences from a given sentence without losing the meaning of the original sentence.")
 
 
 
