@@ -43,7 +43,7 @@ if language == "English":
     if st.button("Visualize"):
         doc = nlp(en_sentence)
         visualize_parser(doc, displacy_options={
-                             "Compact": True, "bg": "#09a3d5", "color": "white", "font": "Source Sans Pro", "collapse_phrases": True})
+            "compact": True, "bg": "#09a3d5", "color": "white", "font": "Source Sans Pro", "collapse_phrases": True})
         visualize_ner(doc, labels=nlp.get_pipe("ner").labels)
 else:
     vi_sentence = st.text_input("Enter your vi sentence:")
@@ -53,7 +53,7 @@ else:
     if st.button("Visualize"):
         doc = nlp(vi_sentence)
         visualize_parser(doc, displacy_options={
-                             "Compact": True, "bg": "#09a3d5", "color": "white", "font": "Source Sans Pro", "collapse_phrases": True})
+            "compact": True, "bg": "#09a3d5", "color": "white", "font": "Source Sans Pro", "collapse_phrases": True})
         visualize_ner(doc, labels=nlp.get_pipe("ner").labels)
 
 # else:
