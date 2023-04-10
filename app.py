@@ -2,7 +2,7 @@
 import os
 import streamlit as st
 import requests
-from spacy_streamlit import visualize_parser, visualize_ner, visualize_spans
+from spacy_streamlit import visualize_parser, visualize_ner, visualize_textcat
 import spacy
 
 # os.system("/home/appuser/venv/bin/python -m spacy download en_core_web_sm")
@@ -29,7 +29,7 @@ if st.button("Generate en sentence"):
 	doc = nlp(en_sentence)
 	visualize_parser(doc)
 	visualize_ner(doc, labels=nlp.get_pipe("ner").labels)
-	visualize_spans(doc, answer, attrs=["ENT_TYPE", "ENT_IOB", "ENT_KB_ID"])
+	visualize_textcat(doc)
 
 vi_sentence = st.text_input("Enter your vi sentence:")
 if st.button("Generate vi sentence"):
