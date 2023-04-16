@@ -55,7 +55,7 @@ else:
     vi_sentence = st.text_input("Enter your vi sentence:")
     if st.button("Generate"):
         answer = text2text(vi_sentence, API_URL=VI_MODEL_API_URL)
-        st.write(answer)
+        st.success(answer[0]["generated_text"])
     if st.button("Visualize"):
         doc = nlp(vi_sentence)
         visualize_parser(doc, displacy_options={
