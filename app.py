@@ -77,7 +77,7 @@ st.sidebar.title("Contact")
 st.sidebar.info("Email:  51900046@student.tdtu.edu.vn")
 
 # display the images in /images folder 
-st.image("images/1.png", width=200)
-st.image("images/2.gif", width=200)
-st.image("images/3.png", width=200)
+st.image("images/1.png")
+st.image("images/2.gif")
+st.image("images/3.png")
 
