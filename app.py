@@ -7,7 +7,7 @@ import spacy
 from spacy import displacy
 import time
 
-st.set_page_config(layout="wide")
+st.set_page_config(layout="wide", page_title="NLP Application")
 
 # os.system("/home/appuser/venv/bin/python -m spacy download en_core_web_sm")
 st.title("NLP Application")
