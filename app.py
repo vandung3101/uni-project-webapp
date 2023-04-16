@@ -33,6 +33,7 @@ def text2text(sentence):
     # keep query ultil response is contain "generated_text"
     while True:
         response = query(payload)
+        print(response)
         if "generated_text" in response[0]:
             break
         # wait 1 second
