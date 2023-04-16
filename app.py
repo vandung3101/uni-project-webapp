@@ -74,8 +74,9 @@ st.sidebar.title("Source code and Reference")
 st.sidebar.info("https://github.com/vandung3101/uni-project-webapp")
 
 # add a link to the model on hugingface
-st.sidebar.title("Model")
-st.sidebar.info("VN https://huggingface.co/ihgn/similar-questions \n EN https://huggingface.co/vandung/t5-para")
+st.sidebar.title("Model card")
+st.sidebar.info("VN https://huggingface.co/ihgn/similar-questions")
+st.sidebar.info("EN https://huggingface.co/vandung/t5-para")
 
 # add Contact info
 st.sidebar.title("Contact")
