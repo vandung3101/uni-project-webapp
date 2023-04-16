@@ -9,7 +9,7 @@ import time
 
 st.set_page_config(layout="wide")
 
-os.system("/home/appuser/venv/bin/python -m spacy download en_core_web_sm")
+# os.system("/home/appuser/venv/bin/python -m spacy download en_core_web_sm")
 st.title("NLP Application")
 
 # write a short description of the app
@@ -28,7 +28,7 @@ def query(payload, API_URL=EN_MODEL_API_URL):
     return response.json()
 
 
-def text2text(sentence):
+def text2text(sentence, API_URL=EN_MODEL_API_URL):
     payload = {"inputs": sentence}
     # keep query ultil response is contain "generated_text"
     while True:
@@ -48,7 +48,7 @@ language = st.sidebar.radio(
 if language == "English":
     en_sentence = st.text_input("Enter your sentence:")
     if st.button("Generate"):
-        answer = text2text(en_sentence)
+        answer = text2text(en_sentence, API_URL=EN_MODEL_API_URL)
         st.success(answer[0]["generated_text"])
     if st.button("Visualize"):
         doc = nlp(en_sentence)
@@ -58,7 +58,7 @@ if language == "English":
 else:
     vi_sentence = st.text_input("Enter your vi sentence:")
     if st.button("Generate"):
-        answer = text2text(vi_sentence)
+        answer = text2text(vi_sentence, API_URL=VI_MODEL_API_URL)
         st.write(answer)
     if st.button("Visualize"):
         doc = nlp(vi_sentence)
@@ -74,7 +74,7 @@ st.sidebar.title("Source code and Reference")
 st.sidebar.info("https://github.com/vandung3101/uni-project-webapp")
 
 # add a link to the model on hugingface
-st.sidebar.title("Model card")
+st.sidebar.title("Model cards")
 st.sidebar.info("VN https://huggingface.co/ihgn/similar-questions")
 st.sidebar.info("EN https://huggingface.co/vandung/t5-para")
 
@@ -83,7 +83,7 @@ st.sidebar.title("Contact")
 st.sidebar.info("Email:  51900046@student.tdtu.edu.vn")
 
 # display the images in /images folder 
-col1, col2, col3 = st.beta_columns([1, 6, 1])
+col1, col2, col3 = st.columns([1, 6, 1])
 with col1:
     st.write("")
 with col2:
