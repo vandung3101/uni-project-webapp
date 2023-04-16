@@ -77,7 +77,12 @@ st.sidebar.title("Contact")
 st.sidebar.info("Email:  51900046@student.tdtu.edu.vn")
 
 # display the images in /images folder 
-st.image("images/1.png")
-st.image("images/2.gif")
-st.image("images/3.png")
-
+col1, col2, col3 = st.beta_columns([1, 6, 1])
+with col1:
+    st.write("")
+with col2:
+    st.image("images/1.png")
+    st.image("images/2.gif")
+    st.image("images/3.png")
+with col3:
+    st.write("")
