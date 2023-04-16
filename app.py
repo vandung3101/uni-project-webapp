@@ -73,6 +73,11 @@ st.sidebar.info("This app is created by Van Dung and Sang Sinh. Advised by Mr. L
 st.sidebar.title("Source code and Reference")
 st.sidebar.info("https://github.com/vandung3101/uni-project-webapp")
 
+# add a link to the model on hugingface
+st.sidebar.title("Model")
+st.sidebar.info("https://huggingface.co/ihgn/similar-questions")
+st.sidebar.info("https://huggingface.co/vandung/t5-para")
+
 # add Contact info
 st.sidebar.title("Contact")
 st.sidebar.info("Email:  51900046@student.tdtu.edu.vn")
