@@ -65,19 +65,6 @@ else:
             "compact": True, "bg": "#09a3d5", "color": "white", "font": "Source Sans Pro", "collapse_phrases": True})
         visualize_ner(doc, labels=nlp.get_pipe("ner").labels)
 
-# else:
-#     vi_sentence = st.text_input("Enter your vi sentence:")
-#     if st.button("Generate"):
-#         answer = text2text(vi_sentence)
-#         doc = nlp(vi_sentence)
-#         visualize_parser(doc, displacy_options={
-#                          "Compact": True, "bg": "#09a3d5", "color": "white", "font": "Source Sans Pro", "collapse_phrases": True})
-#         visualize_ner(doc, labels=nlp.get_pipe("ner").labels)
-#         st.write(answer)
-
-# add author info to the sidebar
-# author are Van Dung and Sang Sinh
-# advisor is Mr. Le Anh Cuong
 st.sidebar.title("About")
 st.sidebar.info("This app is created by Van Dung and Sang Sinh. Advised by Mr. Le Anh Cuong.")
 
@@ -88,3 +75,9 @@ st.sidebar.info("https://github.com/vandung3101/uni-project-webapp")
 # add Contact info
 st.sidebar.title("Contact")
 st.sidebar.info("Email:  51900046@student.tdtu.edu.vn")
+
+# display the images in /images folder 
+st.image("images/1.png", width=200)
+st.image("images/2.gif", width=200)
+st.image("images/3.png", width=200)
+
