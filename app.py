@@ -30,14 +30,10 @@ def query(payload, API_URL=EN_MODEL_API_URL):
 
 def text2text(sentence, API_URL=EN_MODEL_API_URL):
     payload = {"inputs": sentence}
-    # keep query ultil response is contain "generated_text"
-    while True:
-        response = query(payload)
-        print(response)
-        if "generated_text" in response[0]:
-            break
-        # wait 1 second
-        time.sleep(1)
+    # check if generated_text exists in the response
+    while not "generated_text" in query(payload, API_URL=API_URL)[0]:
+        time.sleep(0.5)
+    response = query(payload, API_URL=API_URL)
     return response
 
 
