@@ -20,7 +20,7 @@ VI_MODEL_API_URL = "https://api-inference.huggingface.co/models/ihgn/similar-que
 EN_MODEL_API_URL = "https://api-inference.huggingface.co/models/vandung/t5-para"
 headers = {"Authorization": "Bearer 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"}
 
-nlp = spacy.load("en_core_web_sm")
+# nlp = spacy.load("en_core_web_sm")
 
 
 def query(payload, API_URL=EN_MODEL_API_URL):
@@ -46,21 +46,21 @@ if language == "English":
     if st.button("Generate"):
         answer = text2text(en_sentence, API_URL=EN_MODEL_API_URL)
         st.success(answer[0]["generated_text"])
-    if st.button("Visualize"):
-        doc = nlp(en_sentence)
-        visualize_parser(doc, displacy_options={
-            "compact": True, "bg": "#09a3d5", "color": "white", "font": "Source Sans Pro", "collapse_phrases": True})
-        visualize_ner(doc, labels=nlp.get_pipe("ner").labels)
+    # if st.button("Visualize"):
+    #     doc = nlp(en_sentence)
+    #     visualize_parser(doc, displacy_options={
+    #         "compact": True, "bg": "#09a3d5", "color": "white", "font": "Source Sans Pro", "collapse_phrases": True})
+    #     visualize_ner(doc, labels=nlp.get_pipe("ner").labels)
 else:
     vi_sentence = st.text_input("Enter your vi sentence:")
     if st.button("Generate"):
         answer = text2text(vi_sentence, API_URL=VI_MODEL_API_URL)
         st.success(answer[0]["generated_text"])
-    if st.button("Visualize"):
-        doc = nlp(vi_sentence)
-        visualize_parser(doc, displacy_options={
-            "compact": True, "bg": "#09a3d5", "color": "white", "font": "Source Sans Pro", "collapse_phrases": True})
-        visualize_ner(doc, labels=nlp.get_pipe("ner").labels)
+    # if st.button("Visualize"):
+    #     doc = nlp(vi_sentence)
+    #     visualize_parser(doc, displacy_options={
+    #         "compact": True, "bg": "#09a3d5", "color": "white", "font": "Source Sans Pro", "collapse_phrases": True})
+    #     visualize_ner(doc, labels=nlp.get_pipe("ner").labels)
 
 st.sidebar.title("About")
 st.sidebar.info("This app is created by Van Dung and Sang Sinh. Advised by Mr. Le Anh Cuong.")
