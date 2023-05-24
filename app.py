@@ -28,9 +28,9 @@ def query(payload, API_URL=EN_MODEL_API_URL):
     return response.json()
 
 
-def text2text(sentence, API_URL=EN_MODEL_API_URL):
+def text2text(sentence, maxnewtokens, API_URL=EN_MODEL_API_URL):
     payload = {"inputs": sentence,
-               "parameters": {"max_new_tokens": 60, "do_sample": True, "num_return_sequences": 5, "temperature": 50.0},
+               "parameters": {"max_new_tokens": maxnewtokens, "do_sample": True, "num_return_sequences": 5, "temperature": 30.0},
                "options": {"wait_for_model": True}}
     response = query(payload, API_URL=API_URL)
     return response
@@ -43,8 +43,10 @@ language = st.sidebar.radio(
 if language == "English":
     en_sentence = st.text_input("Enter your sentence:")
     if st.button("Generate"):
+        maxnewtokens = len(en_sentence) + 5
         answer = text2text(en_sentence, API_URL=EN_MODEL_API_URL)
-        st.success(answer)
+        for i in range(len(answer)):
+            st.success(answer[i]["generated_text"])
     # if st.button("Visualize"):
     #     doc = nlp(en_sentence)
     #     visualize_parser(doc, displacy_options={
