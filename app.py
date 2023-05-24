@@ -44,8 +44,7 @@ if language == "English":
     en_sentence = st.text_input("Enter your sentence:")
     if st.button("Generate"):
         answer = text2text(en_sentence, API_URL=EN_MODEL_API_URL)
-        for i in range(len(answer)):
-            st.success(answer[i]["generated_text"])
+        st.success(answer)
     # if st.button("Visualize"):
     #     doc = nlp(en_sentence)
     #     visualize_parser(doc, displacy_options={
