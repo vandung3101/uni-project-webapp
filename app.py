@@ -29,10 +29,9 @@ def query(payload, API_URL=EN_MODEL_API_URL):
 
 
 def text2text(sentence, API_URL=EN_MODEL_API_URL):
-    payload = {"inputs": sentence}
-    # check if generated_text exists in the response
-    while not "generated_text" in query(payload, API_URL=API_URL)[0]:
-        time.sleep(0.5)
+    payload = {"inputs": sentence,
+               "parameters": {"num_return_sequences" : 3},
+               "options": {"wait_for_model": True}}
     response = query(payload, API_URL=API_URL)
     return response
 
@@ -45,7 +44,8 @@ if language == "English":
     en_sentence = st.text_input("Enter your sentence:")
     if st.button("Generate"):
         answer = text2text(en_sentence, API_URL=EN_MODEL_API_URL)
-        st.success(answer[0]["generated_text"])
+        for i in range(len(answer)):
+            st.success(answer[i]["generated_text"])
     # if st.button("Visualize"):
     #     doc = nlp(en_sentence)
     #     visualize_parser(doc, displacy_options={
@@ -63,7 +63,8 @@ else:
     #     visualize_ner(doc, labels=nlp.get_pipe("ner").labels)
 
 st.sidebar.title("About")
-st.sidebar.info("This app is created by Van Dung and Sang Sinh. Advised by Mr. Le Anh Cuong.")
+st.sidebar.info(
+    "This app is created by Van Dung and Sang Sinh. Advised by Mr. Le Anh Cuong.")
 
 # add a link to the source code
 st.sidebar.title("Source code and Reference")
@@ -78,7 +79,7 @@ st.sidebar.info("EN https://huggingface.co/vandung/t5-para")
 st.sidebar.title("Contact")
 st.sidebar.info("Email:  51900046@student.tdtu.edu.vn")
 
-# display the images in /images folder 
+# display the images in /images folder
 col1, col2, col3 = st.columns([1, 6, 1])
 with col1:
     st.write("")
