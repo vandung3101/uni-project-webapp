@@ -6,6 +6,10 @@ from spacy_streamlit import visualize_parser, visualize_ner
 import spacy
 from spacy import displacy
 import time
+import requests
+import uuid
+import json
+
 
 st.set_page_config(layout="wide", page_title="NLP Application")
 
@@ -35,6 +39,36 @@ def text2text(sentence, maxnewtokens, API_URL=EN_MODEL_API_URL):
     response = query(payload, API_URL=API_URL)
     return response
 
+
+def translate(sentence, source_lang, target_lang):
+    key = "83fa28a35f3e453d9722f9495c65cf46"
+    endpoint = "https://api.cognitive.microsofttranslator.com/"
+    location = "eastus"
+
+    path = '/translate'
+    constructed_url = endpoint + path
+    params = {
+        'api-version': '3.0',
+        'from': source_lang,
+        'to': [target_lang]
+    }
+
+    headers = {
+        'Ocp-Apim-Subscription-Key': key,
+        'Ocp-Apim-Subscription-Region': location,
+        'Content-type': 'application/json',
+        'X-ClientTraceId': str(uuid.uuid4())
+    }
+
+    body = [{
+        'text': sentence
+    }]
+
+    request = requests.post(
+        constructed_url, params=params, headers=headers, json=body)
+    response = request.json()
+    return response[0]["translations"][0]["text"]
+
 st.sidebar.title("Select language")
 language = st.sidebar.radio(
     "Language", ["English", "Vietnamese"], horizontal=True)
@@ -43,8 +77,7 @@ if language == "English":
     en_sentence = st.text_input("Enter your sentence:")
     if st.button("Generate"):
         maxnewtokens = len(en_sentence) + 5
-        answer = text2text(en_sentence, maxnewtokens ,API_URL=EN_MODEL_API_URL)
-        st.success(answer)
+        answer = text2text(en_sentence, maxnewtokens, API_URL=EN_MODEL_API_URL)
         for i in range(len(answer)):
             st.success(answer[i]["generated_text"])
     # if st.button("Visualize"):
@@ -52,16 +85,20 @@ if language == "English":
     #     visualize_parser(doc, displacy_options={
     #         "compact": True, "bg": "#09a3d5", "color": "white", "font": "Source Sans Pro", "collapse_phrases": True})
     #     visualize_ner(doc, labels=nlp.get_pipe("ner").labels)
-# else:
-#     vi_sentence = st.text_input("Enter your vi sentence:")
-#     if st.button("Generate"):
-#         answer = text2text(vi_sentence, API_URL=VI_MODEL_API_URL)
-#         st.success(answer[0]["generated_text"])
-    # if st.button("Visualize"):
-    #     doc = nlp(vi_sentence)
-    #     visualize_parser(doc, displacy_options={
-    #         "compact": True, "bg": "#09a3d5", "color": "white", "font": "Source Sans Pro", "collapse_phrases": True})
-    #     visualize_ner(doc, labels=nlp.get_pipe("ner").labels)
+else:
+    vi_sentence = st.text_input("Enter your vi sentence:")
+    if st.button("Generate"):
+        en_sentence = translate(vi_sentence, "vi", "en")
+        maxnewtokens = len(en_sentence) + 5
+        answer = text2text(en_sentence, maxnewtokens, API_URL=EN_MODEL_API_URL)
+        for i in range(len(answer)):
+            vi_sentence = translate(answer[i]["generated_text"], "en", "vi")
+            st.success(vi_sentence)
+        # if st.button("Visualize"):
+        #     doc = nlp(vi_sentence)
+        #     visualize_parser(doc, displacy_options={
+        #         "compact": True, "bg": "#09a3d5", "color": "white", "font": "Source Sans Pro", "collapse_phrases": True})
+        #     visualize_ner(doc, labels=nlp.get_pipe("ner").labels)
 
 st.sidebar.title("About")
 st.sidebar.info(
