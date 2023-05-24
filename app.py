@@ -30,7 +30,7 @@ def query(payload, API_URL=EN_MODEL_API_URL):
 
 def text2text(sentence, maxnewtokens, API_URL=EN_MODEL_API_URL):
     payload = {"inputs": sentence,
-               "parameters": {"max_new_tokens": maxnewtokens, "do_sample": True, "num_return_sequences": 5, "temperature": 30.0},
+               "parameters": {"max_new_tokens": maxnewtokens, "do_sample": True, "num_return_sequences": 5, "temperature": 1.0},
                "options": {"wait_for_model": True}}
     response = query(payload, API_URL=API_URL)
     return response
