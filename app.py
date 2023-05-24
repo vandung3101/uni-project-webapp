@@ -44,7 +44,7 @@ if language == "English":
     en_sentence = st.text_input("Enter your sentence:")
     if st.button("Generate"):
         maxnewtokens = len(en_sentence) + 5
-        answer = text2text(en_sentence, API_URL=EN_MODEL_API_URL)
+        answer = text2text(en_sentence, maxnewtokens ,API_URL=EN_MODEL_API_URL)
         for i in range(len(answer)):
             st.success(answer[i]["generated_text"])
     # if st.button("Visualize"):
