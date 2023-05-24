@@ -35,7 +35,6 @@ def text2text(sentence, maxnewtokens, API_URL=EN_MODEL_API_URL):
     response = query(payload, API_URL=API_URL)
     return response
 
-
 st.sidebar.title("Select language")
 language = st.sidebar.radio(
     "Language", ["English", "Vietnamese"], horizontal=True)
@@ -52,11 +51,11 @@ if language == "English":
     #     visualize_parser(doc, displacy_options={
     #         "compact": True, "bg": "#09a3d5", "color": "white", "font": "Source Sans Pro", "collapse_phrases": True})
     #     visualize_ner(doc, labels=nlp.get_pipe("ner").labels)
-else:
-    vi_sentence = st.text_input("Enter your vi sentence:")
-    if st.button("Generate"):
-        answer = text2text(vi_sentence, API_URL=VI_MODEL_API_URL)
-        st.success(answer[0]["generated_text"])
+# else:
+#     vi_sentence = st.text_input("Enter your vi sentence:")
+#     if st.button("Generate"):
+#         answer = text2text(vi_sentence, API_URL=VI_MODEL_API_URL)
+#         st.success(answer[0]["generated_text"])
     # if st.button("Visualize"):
     #     doc = nlp(vi_sentence)
     #     visualize_parser(doc, displacy_options={
