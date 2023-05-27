@@ -21,7 +21,7 @@ st.info("This app is a NLP application that can generate sentences from a given 
 
 
 VI_MODEL_API_URL = "https://api-inference.huggingface.co/models/ihgn/similar-questions"
-EN_MODEL_API_URL = "https://u8d64tpm53k51c9p.us-east-1.aws.endpoints.huggingface.cloud"
+EN_MODEL_API_URL = "https://oyn0krsayfr0rho8.us-east-1.aws.endpoints.huggingface.cloud"
 headers = {"Authorization": "Bearer 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"}
 
 # nlp = spacy.load("en_core_web_sm")
