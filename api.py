@@ -1,19 +1,15 @@
-import warnings
-warnings.filterwarnings("ignore")
-from parrot import Parrot
-parrot = Parrot(model_tag="prithivida/parrot_paraphraser_on_T5", use_gpu=False)
-# phrases = ["Can you recommed some upscale restaurants in Rome?"]
-# for phrase in phrases:
-#   print("-"*100)
-#   print(phrase)
-#   print("-"*100)
-#   para_phrases = parrot.augment(input_phrase=phrase,
-#                                 use_gpu=False,
-#                                 diversity_ranker="levenshtein",
-#                                 do_diverse=False, 
-#                                 max_return_phrases = 10, 
-#                                 max_length=32, 
-#                                 adequacy_threshold = 0.99, 
-#                                 fluency_threshold = 0.90)
-#   for paraphrase in para_phrases:                                  
-#       print(paraphrase)                               
+# translate tapaco_paraphrases_dataset.csv from english to vietnamese
+# save to tapaco_paraphrases_dataset_vi.csv
+# using google translate api
+
+import pandas as pd
+import time
+from googletrans import Translator
+
+translator = Translator()
+
+df = pd.read_csv("tapaco_paraphrases_dataset.csv", sep="\t")
+# only translate the first 1000 rows
+df = df[:1000]
+df["Text"] = df["Text"].apply(lambda x: translator.translate(x, src="en", dest="vi").text)
+df["Paraphrase"] = df["Paraphrase"].apply(lambda x: translator.translate(x, src="en", dest="vi").text)

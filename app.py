@@ -21,7 +21,8 @@ st.info("This app is a NLP application that can generate sentences from a given 
 
 
 VI_MODEL_API_URL = "https://api-inference.huggingface.co/models/ihgn/similar-questions"
-EN_MODEL_API_URL = "https://oyn0krsayfr0rho8.us-east-1.aws.endpoints.huggingface.cloud"
+EN_MODEL_API_URL_1 = "https://oyn0krsayfr0rho8.us-east-1.aws.endpoints.huggingface.cloud"
+EN_MODEL_API_URL_2 = "https://mf8czbm3y65sp1gx.us-east-1.aws.endpoints.huggingface.cloud"
 headers = {"Authorization": "Bearer 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"}
 
 # nlp = spacy.load("en_core_web_sm")
@@ -71,20 +72,22 @@ def translate(sentence, source_lang, target_lang):
 
 st.sidebar.title("Select language")
 language = st.sidebar.radio(
-    "Language", ["English", "Vietnamese"], horizontal=True)
+    "Language", ["English - T5", "English - GPT3", "Vietnamese"], horizontal=True)
 
-if language == "English":
+if language == "English - T5":
     en_sentence = st.text_input("Enter your sentence:")
     if st.button("Generate"):
         maxnewtokens = len(en_sentence) + 5
         answer = text2text(en_sentence, maxnewtokens, API_URL=EN_MODEL_API_URL)
         for i in range(len(answer)):
             st.success(answer[i]["generated_text"])
-    # if st.button("Visualize"):
-    #     doc = nlp(en_sentence)
-    #     visualize_parser(doc, displacy_options={
-    #         "compact": True, "bg": "#09a3d5", "color": "white", "font": "Source Sans Pro", "collapse_phrases": True})
-    #     visualize_ner(doc, labels=nlp.get_pipe("ner").labels)
+elif language == "English - GPT3":
+    en_sentence = st.text_input("Enter your sentence:")
+    if st.button("Generate"):
+        maxnewtokens = len(en_sentence) + 5
+        answer = text2text(en_sentence, maxnewtokens, API_URL=EN_MODEL_API_URL_2)
+        for i in range(len(answer)):
+            st.success(answer[i]["generated_text"])
 else:
     vi_sentence = st.text_input("Enter your vi sentence:")
     if st.button("Generate"):
@@ -110,8 +113,8 @@ st.sidebar.info("https://github.com/vandung3101/uni-project-webapp")
 
 # add a link to the model on hugingface
 st.sidebar.title("Model cards")
-st.sidebar.info("VN https://huggingface.co/ihgn/similar-questions")
-st.sidebar.info("EN https://huggingface.co/vandung/t5-para")
+st.sidebar.info("https://huggingface.co/ihgn/similar-questions")
+st.sidebar.info("https://huggingface.co/ihgn/gpt3-paraphrase")
 
 # add Contact info
 st.sidebar.title("Contact")
@@ -122,6 +125,9 @@ col1, col2, col3 = st.columns([1, 6, 1])
 with col1:
     st.write("")
 with col2:
+    st.image("images/6.png")
+    st.image("images/4.png")
+    st.image("images/5.png")
     st.image("images/1.png")
     st.image("images/2.gif")
     st.image("images/3.png")
