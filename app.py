@@ -2,9 +2,6 @@
 import os
 import streamlit as st
 import requests
-from spacy_streamlit import visualize_parser, visualize_ner
-import spacy
-from spacy import displacy
 import time
 import requests
 import uuid
