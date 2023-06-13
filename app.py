@@ -25,12 +25,12 @@ headers = {"Authorization": "Bearer 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"}
 # nlp = spacy.load("en_core_web_sm")
 
 
-def query(payload, API_URL=EN_MODEL_API_URL):
+def query(payload, API_URL=EN_MODEL_API_URL_2):
     response = requests.post(API_URL, headers=headers, json=payload)
     return response.json()
 
 
-def text2text(sentence, maxnewtokens, API_URL=EN_MODEL_API_URL):
+def text2text(sentence, maxnewtokens, API_URL=EN_MODEL_API_URL_2):
     payload = {"inputs": sentence,
                "parameters": {"max_new_tokens": maxnewtokens, "do_sample": True, "num_return_sequences": 5, "temperature": 1.0},
                "options": {"wait_for_model": True}}
