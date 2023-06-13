@@ -90,7 +90,7 @@ else:
     if st.button("Generate"):
         en_sentence = translate(vi_sentence, "vi", "en")
         maxnewtokens = len(en_sentence) + 5
-        answer = text2text(en_sentence, maxnewtokens, API_URL=EN_MODEL_API_URL)
+        answer = text2text(en_sentence, maxnewtokens, API_URL=EN_MODEL_API_URL_2)
         for i in range(len(answer)):
             vi_sentence = translate(answer[i]["generated_text"], "en", "vi")
             st.success(vi_sentence)
