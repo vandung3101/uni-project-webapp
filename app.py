@@ -69,7 +69,7 @@ def translate(sentence, source_lang, target_lang):
 
 st.sidebar.title("Select language")
 language = st.sidebar.radio(
-    "Language", ["English - T5", "English - GPT3", "Vietnamese"], horizontal=True)
+    "Language", ["English - T5", "English - GPT3", "Vietnamese"])
 
 if language == "English - T5":
     en_sentence = st.text_input("Enter your sentence:")
